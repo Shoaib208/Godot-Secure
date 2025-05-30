@@ -1,2 +1,165 @@
-# Godot-Secure
-Godot Secure transforms your Godot engine into a fortress for game assets. By integrating Camellia-256 encryption with a unique security token system, this solution creates a cryptographically unique engine build that prevents generic decryption tools from accessing your game assets.
+# Godot Secure - Enhanced Asset Protection
+
+![Godot Engine Logo](https://github.com/KnifeXRage/Godot-Secure/blob/main/Godot%20Secure.png)
+
+## Overview
+
+**Godot Secure** transforms your Godot engine into a fortress for game assets. By integrating **Camellia-256** encryption with a **unique security token system**, this solution creates a cryptographically **unique engine build** that prevents generic decryption tools from accessing your game assets.
+
+### *Effortless Security for Godot Games*
+>This script enhances your Godot engine with military-grade Camellia encryption and a unique security token system with just one command. Unlike standard encryption, this creates a custom Godot build that's cryptographically unique to you, preventing universal decryption tools from working with your game assets.
+
+## Key Features
+
+- 🔒 **Camellia-256 Encryption**: Military-grade encryption algorithm replacing AES
+- 🎲 **Randomized Magic Headers**: Unique file signatures per build
+- 🔑 **Security Token System**: 32-byte token embedded directly in engine's binary
+- 🛡️ **Per-Build Uniqueness**: Each compilation of engine and templates is cryptographically distinct from others
+- ⚡ **Automated Setup**: One-command modification of Godot source
+- 💾 **No external dependencies**: Everything included
+
+## Why Godot Secure?
+
+Standard Godot encryption has known vulnerabilities. Our solution:
+
+| Feature | Standard Godot | Godot Secure |
+|---------|----------------|--------------|
+| Encryption Algorithm | AES-256 | Camellia-256 |
+| Universal Decryption Tools | Vulnerable | **Protected** |
+| Per Engine-Build Uniqueness | No | **Yes** |
+| Key Obfuscation | No | **Yes** |
+| Magic Header | Fixed | **Randomized** |
+| Required Reverse Engineering | Generic | **Per-Build** |
+
+## Requirements
+
+1. **Godot Source Code** (4.x recommended)
+2. **Python 3.6+**
+3. **OpenSSL** (for key generation)
+4. **Build Tools** (SCons, compilers)
+
+## Installation & Usage
+
+>Must Read Godot's Official Documentation:
+>🔗[View Official Documentation](https://docs.godotengine.org/en/stable/contributing/development/compiling/index.html)
+
+### Step 1: Prepare Environment
+```bash
+git clone https://github.com/godotengine/godot.git
+cd godot
+```
+
+### Step 2: Generate Encryption Key
+
+```bash
+# Generate 256-bit key (KEEP THIS SECURE!)
+openssl rand -hex 32 > godot.gdkey
+
+## Set environment variable
+
+# For Linux/macOS:
+export SCRIPT_AES256_ENCRYPTION_KEY=$(cat godot.gdkey)
+
+# For Windows (PowerShell):
+$env:SCRIPT_AES256_ENCRYPTION_KEY = Get-Content godot.gdkey
+
+# Or Set it Permanently from Control Panel (Windows)
+```
+
+### Step 3: Run Setup Script
+> You Can the Script directly inside Godot Source folder without using arguments!
+> Using: `python godot_secure.py`
+```bash
+# Run The Godot Secure Script
+python godot_secure.py /path/to/godot_source/
+
+#Example:
+python godot_secure.py godot/
+```
+
+### Step 4: Compile Godot Engine and Export Templates
+```bash
+# For Engine (Must REQUIRED):
+scons platform=windows target=editor use_llvm=yes use_mingw=yes # Example for Windows
+scons platform=linuxbsd target=editor use_llvm=yes use_mingw=yes # Example for Linux BSD
+scons platform=macos target=editor use_llvm=yes use_mingw=yes # Example for MacOS
+
+# For Export Templates (Must REQUIRED):
+scons platform=windows target=template_debug use_llvm=yes use_mingw=yes
+scons platform=windows target=template_release use_llvm=yes use_mingw=yes
+...
+
+```
+> Build others Templates like these too and use `platform=macos` or `platform=linuxbsd` to build for *MacOS* or *Linux BSD*, Also use `use_llvm=yes use_mingw=yes` for faster builds!
+
+
+# How It Works
+
+The script makes these key modifications:
+
+1. **Encryption Upgrade**
+   - Replaces AES with Camellia-256 encryption
+   - Uses MbedTLS implementation (already in Godot)
+
+2. **Unique Identifiers**
+   - Generates random magic headers for file signatures
+   - Creates security token embedded in engine binary
+
+3. **Key Protection**
+   - `Actual Key = (Input Key) XOR (Security Token)`
+   - Token exists only in compiled binary
+
+## Troubleshooting
+
+**Script not working?**
+- Ensure Python 3.6+ installed
+- Verify correct Godot source path
+- Run with absolute path if needed:  
+  `python godot_secure.py /path/to/godot_source`
+
+**Compilation errors?**
+- Clean build: `scons --clean`
+- Ensure all submodules: `git submodule update --init`
+
+### Common Issues
+1. **File not found errors**: Ensure correct Godot source path
+2. **Compilation errors**: Verify Mbed TLS is properly included
+3. **Encryption/decryption mismatch**: Always use matching engine builds with matching template(s) builds
+
+### Verification Steps
+1. Check script output for success messages
+2. Confirm `security_token.h` exists in `core/crypto/`
+3. Search for `CamelliaContext` in modified files
+4. Verify magic header values in file headers
+
+## Disclaimer
+
+❗ **Use at Your Own Risk**  
+This script modifies core Godot engine files. Always:
+- Back up your source code before running
+- Test builds thoroughly before deployment
+- Maintain secure copies of security tokens
+- Understand that enhanced security increases complexity
+
+### Security Disclaimer
+
+🪧 **Important Considerations**
+   - This creates a **custom Godot engine**
+   - Standard export templates won't work
+   - Always test builds before deployment
+   - Maintain backups of security tokens
+
+### Rebuild Protocol
+🔄 **Always rebuild when:**
+   - Updating Godot source
+   - Changing security parameters
+   - Creating new game versions
+   - Suspecting key compromise
+
+# License
+- MIT License - Free for Personal and Commercial use with attribution: 
+🔗[View License](https://github.com/KnifeXRage/Godot-Secure/blob/main/LICENSE)
+---
+
+**Created with ❤️ for Godot Developers**  
+For support and contributions, please open issues on GitHub
