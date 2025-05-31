@@ -1,4 +1,7 @@
 # Godot Secure - Enhanced Asset Protection
+[![Godot Engine 4.x](https://img.shields.io/badge/Godot_Engine-4.x-blue)](https://godotengine.org/)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/KnifeXRage/Godot-Secure/blob/main/LICENSE)
+<a href='https://ko-fi.com/V7V41FR21F' target='_blank'><img height='21' style='border:0px;height:21px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ![Godot Engine Logo](https://github.com/KnifeXRage/Godot-Secure/blob/main/Godot%20Secure.png)
 
@@ -161,5 +164,17 @@ This script modifies core Godot engine files. Always:
 🔗[View License](https://github.com/KnifeXRage/Godot-Secure/blob/main/LICENSE)
 ---
 
+## 💖 Support Me
+**Hi there! I'm a college student passionate about game development and programming. While this project will always remain free, your support would mean the world as I balance studies and financial challenges.**
+- If you've found this security tool valuable, I'd sincerely appreciate any support as I work through my studies.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V41FR21F)
+
+Every contribution helps maintain and improve this project. And encourage me to make more projects like this!
+
+*This is optional support. The tool remains free and open-source regardless.*
+
+---
+
 **Created with ❤️ for Godot Developers**  
-For support and contributions, please open issues on GitHub
+For contributions, please open issues on GitHub
