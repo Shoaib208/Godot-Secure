@@ -56,6 +56,31 @@ encHeader = generate_magic_header(encTag)
 fileCreated = True
 
 MODIFICATIONS = [
+    #Pre -Steps:
+    {
+        "file": "editor/editor_node.cpp",
+        "operations": [
+            {
+                "type": "replace_line",
+                "description": "Modify Godot title To add Godot Secure",
+                "find": "DisplayServer::get_singleton()->window_set_title(title + String(\" - \") + VERSION_NAME);",
+                "replace": "DisplayServer::get_singleton()->window_set_title(title + String(\" - \") + VERSION_NAME + String(\" (With Godot Secure)\"));"
+            }
+        ]
+    },
+    
+    {
+        "file": "editor/export/project_export.cpp",
+        "operations": [
+            {
+                "type": "replace_line",
+                "description": "Modify Godot export popup title To add Godot Secure",
+                "find": "set_title(TTR(\"Export\"));",
+                "replace": "set_title(TTR(\"Export With Godot Secure\"));"
+            }
+        ]
+    },
+
     # Step 0: Create security token header
     {
         "file": "core/crypto/security_token.h",
@@ -462,7 +487,7 @@ if __name__ == "__main__":
         # Too many arguments provided
         print("\nUsage: python Godot_Secure.py <godot_source_root>")
         exit = input("\nPress Enter key to exit...")
-        sys.exit[1]
+        sys.exit(1)
         
 
     # Check for required Godot source components
@@ -472,7 +497,7 @@ if __name__ == "__main__":
     if not (os.path.isdir(core_dir) and os.path.isfile(sconstruct_file)):
         print(f"{LogColors.FAIL}Error: No valid Godot Source Detected in the Specified Directory.{LogColors.ENDC}")
         exit = input("\nPress Enter key to exit...")
-        sys.exit[1]
+        sys.exit(1)
 
     print(f"Using Godot Source Root: {godot_root}")
     print(f"\n\n{LogColors.HEADER}=== Applying Camellia Encryption For Godot ==={LogColors.ENDC}")
@@ -485,5 +510,4 @@ if __name__ == "__main__":
         print_info(f"{LogColors.OKGREEN} Old Key Backup created at: {LogColors.ENDC}{LogColors.BOLD}{backup_path}{LogColors.ENDC}\n")
     
     exit = input("\nPress Enter key to exit...")
-    sys.exit[1]
-        
+    sys.exit(1)
