@@ -499,7 +499,13 @@ if __name__ == "__main__":
         exit = input("\nPress Enter key to exit...")
         sys.exit(1)
 
-    print(f"Using Godot Source Root: {godot_root}")
+    print(f"\nUsing Godot Source Root: {godot_root}")
+    confirm = input(f"\n\n ⚠   {LogColors.WARNING}Start Godot Secure Operations on Godot Source Root {LogColors.ENDC}{LogColors.FAIL}(y/n)?{LogColors.ENDC}: ").strip().lower()
+    if not (confirm == 'y' or confirm == 'yes'):
+        print("Closing Setup...")
+        exit = input("\nPress Enter key to exit...")
+        sys.exit(1)
+        
     print(f"\n\n{LogColors.HEADER}=== Applying Camellia Encryption For Godot ==={LogColors.ENDC}")
     apply_modifications(godot_root)
     print(f"\n{LogColors.HEADER}=== Operation Complete (View Logs For Info) ==={LogColors.ENDC}\n")
