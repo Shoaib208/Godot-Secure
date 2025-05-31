@@ -41,6 +41,13 @@ Standard Godot encryption has known vulnerabilities. Our solution:
 3. **OpenSSL** (for key generation)
 4. **Build Tools** (SCons, compilers)
 
+## Download Godot Secure: 🔗[Download](https://github.com/KnifeXRage/Godot-Secure/releases/)
+
+
+#### Pro Tip:
+> Directly Run The Script inside Godot Source and Build your `Engine and Templates` as usual with encryption Key!!
+
+
 ## Installation & Usage
 
 >Must Read Godot's Official Documentation:
