@@ -10,11 +10,11 @@
 **Godot Secure** transforms your Godot engine into a fortress for game assets. By integrating **Camellia-256** encryption with a **unique security token system**, this solution creates a cryptographically **unique engine build** that prevents generic decryption tools from accessing your game assets.
 
 ### *Effortless Security for Godot Games*
->This script enhances your Godot engine with military-grade Camellia encryption and a unique security token system with just one command. Unlike standard encryption, this creates a custom Godot build that's cryptographically unique to you, preventing universal decryption tools from working with your game assets.
+>This script enhances your Godot engine with Camellia encryption and a unique security token system with just one command. Unlike standard encryption, this creates a custom Godot build that's cryptographically unique to you, preventing universal decryption tools from working with your game assets.
 
 ## Key Features
 
-- 🔒 **Camellia-256 Encryption**: Military-grade encryption algorithm replacing AES
+- 🔒 **Camellia-256 Encryption**: Cammellia Encryption algorithm replacing AES
 - 🎲 **Randomized Magic Headers**: Unique file signatures per build
 - 🔑 **Security Token System**: 32-byte token embedded directly in engine's binary
 - 🛡️ **Per-Build Uniqueness**: Each compilation of engine and templates is cryptographically distinct from others
