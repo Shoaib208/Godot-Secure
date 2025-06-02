@@ -7,14 +7,13 @@
 
 ## Overview
 
-**Godot Secure** transforms your Godot engine into a fortress for game assets. By integrating **Camellia-256** encryption with a **unique security token system**, this solution creates a cryptographically **unique engine build** that prevents generic decryption tools from accessing your game assets.
+**Godot Secure** transforms your Godot engine into a fortress for game assets. By integrating **Camellia-256 / AES-256** encryption with a **unique security token system**, this solution creates a cryptographically **unique engine build** that prevents generic decryption tools from accessing your game assets.
 
 ### *Effortless Security for Godot Games*
->This script enhances your Godot engine with Camellia encryption and a unique security token system with just one command. Unlike standard encryption, this creates a custom Godot build that's cryptographically unique to you, preventing universal decryption tools from working with your game assets.
+>This script enhances your Godot engine with Camellia/AES encryption and a unique security token system with just one command. Unlike standard encryption, this creates a custom Godot build that's cryptographically unique to you, preventing universal decryption tools from working with your game assets.
 
 ## Key Features
 
-- 🔒 **Camellia-256 Encryption**: Cammellia Encryption algorithm replacing AES
 - 🎲 **Randomized Magic Headers**: Unique file signatures per build
 - 🔑 **Security Token System**: 32-byte token embedded directly in engine's binary
 - 🛡️ **Per-Build Uniqueness**: Each compilation of engine and templates is cryptographically distinct from others
@@ -27,7 +26,7 @@ Standard Godot encryption has known vulnerabilities. Our solution:
 
 | Feature | Standard Godot | Godot Secure |
 |---------|----------------|--------------|
-| Encryption Algorithm | AES-256 | Camellia-256 |
+| Encryption Algorithm | AES-256 | Camellia-256 / AES-256 |
 | Universal Decryption Tools | Vulnerable | **Protected** |
 | Per Engine-Build Uniqueness | No | **Yes** |
 | Key Obfuscation | No | **Yes** |
@@ -107,15 +106,11 @@ scons platform=windows target=template_release use_llvm=yes use_mingw=yes
 
 The script makes these key modifications:
 
-1. **Encryption Upgrade**
-   - Replaces AES with Camellia-256 encryption
-   - Uses MbedTLS implementation (already in Godot)
-
-2. **Unique Identifiers**
+1. **Unique Identifiers**
    - Generates random magic headers for file signatures
    - Creates security token embedded in engine binary
 
-3. **Key Protection**
+2. **Key Protection**
    - `Actual Key = (Input Key) XOR (Security Token)`
    - Token exists only in compiled binary
 
@@ -139,7 +134,7 @@ The script makes these key modifications:
 ### Verification Steps
 1. Check script output for success messages
 2. Confirm `security_token.h` exists in `core/crypto/`
-3. Search for `CamelliaContext` in modified files
+3. Search for `CamelliaContext / AESContext` in modified files
 4. Verify magic header values in file headers
 
 ## Disclaimer
