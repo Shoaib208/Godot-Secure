@@ -63,8 +63,8 @@ MODIFICATIONS = [
             {
                 "type": "replace_line",
                 "description": "Modify Godot title To add Godot Secure",
-                "find": "DisplayServer::get_singleton()->window_set_title(title + String(\" - \") + VERSION_NAME);",
-                "replace": "DisplayServer::get_singleton()->window_set_title(title + String(\" - \") + VERSION_NAME + String(\" (With Godot Secure)\"));"
+                "find": "DisplayServer::get_singleton()->window_set_title(title + String(\" - \") + GODOT_VERSION_NAME);",
+                "replace": "DisplayServer::get_singleton()->window_set_title(title + String(\" - \") + GODOT_VERSION_NAME + String(\" (With Godot Secure)\"));"
             }
         ]
     },
