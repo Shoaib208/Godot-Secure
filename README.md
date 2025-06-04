@@ -14,7 +14,7 @@
 
 ## Key Features
 
-- 🎲 **Randomized Magic Headers**: Unique file signatures per build
+- 🎲 **Randomized Magic Headers**: Unique file signatures per engine's build (Not Game)
 - 🔑 **Security Token System**: 32-byte token embedded directly in engine's binary
 - 🛡️ **Per-Build Uniqueness**: Each compilation of engine and templates is cryptographically distinct from others
 - ⚡ **Automated Setup**: One-command modification of Godot source
